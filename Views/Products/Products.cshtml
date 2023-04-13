@@ -1,0 +1,422 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product_list</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/StyleAddToCart.css" rel="stylesheetAddToCart">
+    <script src="~/assets/js-lib/angular.min.js"></script>
+    <script src="~/assets/js-lib/angular-cookies.js"></script>
+    <script src="~/assets/js/app/app.js"></script>
+    <script src="~/assets/js/app/Controller/HomeCtr.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body ng-app="myApp" ng-controller="productController">
+    <!-- header-Section starts -->
+    <header class="">
+        <!-- Nav bar -->
+        <div class="row w-100 d-flex position-absolute border border-light mx-0">
+            <!-- Logo  -->
+            <div class="col-6 col-sm-3 col-md-3 col-lg-3 d-block ps-5">
+                <img src="/image/logo-white_170x.png" alt="Logo" class="pt-3">
+            </div>
+            <!-- navigation items -->
+            <div class="col-6 col-sm-9 col-md-6 col-lg-6 d-block text-light fw-bold">
+                <nav class="navbar navbar-expand-lg pt-3 fs-5">
+                    <div class="container-fluid justify-content-start px-3">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarScroll">
+                            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                                style="--bs-scroll-height: 100px;">
+                                <!-- dropdown nav pills -->
+                                <li class="nav-item dropdown text-light">
+                                    <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Home
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/Home/Index">Home</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown text-light">
+                                    <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Shop
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown text-light">
+                                    <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Collections
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" href="#"><img src="" alt="" class="img-fluid"></a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        Blogs
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Left Side Bar </a></li>
+                                        <li><a class="dropdown-item" href="#">Left Side Bar </a></li>
+                                        <li><a class="dropdown-item" href="#">bottomside-bar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Login buttons -->
+            <div class=" d-none d-md-flex col-md-3 col-lg-3 justify-content-center">
+                <ul class="list-unstyled pt-3 mx-3 text-light">
+                    <li class="d-inline-block">
+                        <a href="/Account/Login" class="text-light text-decoration-none" ng-hide="hide"><i class="fa fa-user-circle fs-5 p-3"></i></a>
+                        <p id="set_name" ng-bind="name"></p>
+                    </li>
+                    <li class="d-inline-block">
+                        <a href="#" class="text-light text-decoration-none">
+                            <i class="fa fa-search fs-5 p-3 lg_texthide" ng-hide="hide"></i>
+                        </a>
+                        <a href="#" class="text-light text-decoration-none" ng-bind="Logout" ng-click="logoutUser()"></a>
+                    </li>
+                    <li class="d-inline-block">
+                        <a href="~/Products/AddToCart" class="text-light text-decoration-none" id="cart">
+                            <i class="fa fa-shopping-bag fs-5 p-3 lg_texthide"></i>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+
+   
+    <!-- header-Section  ends-->
+    <!-- bannner Section with Carousel -->
+    <div class="row">
+        <div class="col-12">
+            <img src="/image/breadcumd.jpg" alt="banner" class="img-fluid w-100 big-images">
+            <div class="row">
+                <!-- for carousel -->
+                <div class="col-12"></div>
+            </div>
+        </div>
+    </div>
+    <!-- bannner Section with Carousel End-->
+    <!-- main section start -->
+    <main class="container">
+        <div class="row my-5">
+            <!-- Product Filter Side Panel -->
+            <div class="d-none d-lg-block col-sm-3" id="mySidenav">
+                <a href="javascript:void(0)" class="closebtn text-dark d-block d-lg-none" onclick="closeNav()">
+                    &times;
+                </a>
+                <!-- Filter Options start-->
+                <div class="row">
+                    <!-- Product categories -->
+                    <div class="col-12">
+                        <p class="fs-3">Product categories</p>
+                        <hr>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <label class="form-check-label" for="flexCheckDefault">All</label>
+                        </div>
+                        <div class="form-check" ng-repeat="categor in ProductCategory">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked" ng-bind="categor.Category"></label>
+                        </div>
+                    </div>
+                    <!-- Price filter -->
+                    <div class="col-12">
+                        <hr>
+                        <p class="fs-3">Price</p>
+                        <input type="number" value="0" class="w-25">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&mdash;
+                        <input type="number" value="87" class="w-25 ms-4">
+                    </div>
+                    <!-- Size filter -->
+                    <div class="col-12">
+                        <hr>
+                        <p class="fs-3">Size</p>
+                        <div class="form-check" ng-repeat="Product in Products | limitTo : 6">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked" ng-bind="Product.Size">
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Color filter -->
+                    <div class="col-12">
+                        <hr>
+                        <p class="fs-3">Color</p>
+                        <div class="form-check" ng-repeat="Product in Products | limitTo : 5">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked" ng-bind="Product.Color"></label>
+                        </div>
+                        @*<div class="form-check">
+                                <input class="form-check-input bg-primary" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">Blue</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input bg-success" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">Green</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input bg-warning" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">Yellow</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input bg-dark" type="checkbox" value="" id="flexCheckChecked">
+                                <label class="form-check-label" for="flexCheckChecked">Black</label>
+                            </div>*@
+                    </div>
+                    <!-- Brand filter -->
+                    <div class="col-12">
+                        <hr>
+                        <p class="fs-3">Brand</p>
+                        <div class="form-check" ng-repeat="Product in Products | orderBy: 'Product.Brand'| limitTo : 5">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <label class="form-check-label" for="flexCheckChecked" ng-bind="Product.Brand"></label>
+                        </div>
+                    </div>
+                    <!-- Best seller filter -->
+                    <hr>
+                    <p class="fs-3">Best seller</p>
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end border-bottom mb-1 pb-1" ng-repeat="Product in Products | limitTo : 5">
+                            <img src="{{Product.Image}}" alt="sed porta" class="border rounded img-fluid w-25 h-100">
+                            <div class="row ps-2">
+                                <div class="col-12 text-start">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="col-12" ng-bind="Product.Title"></div>
+                                <div class="price_tag_color col-12" ng-bind="'$'+Product.Price"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tegs filter -->
+                    <div class="col-12">
+                        <p class="fs-3">Tags</p>
+                        <hr>
+                        <button type="button" class="btn btn-outline-dark rounded-pill">Cat Food</button>
+                        <button type="button" class="btn btn-outline-dark rounded-pill">Dog Food</button>
+                        <button type="button" class="btn btn-outline-dark rounded-pill">Dog Toy</button>
+                        <button type="button" class="btn btn-outline-dark rounded-pill mt-2">Fish Food</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Filter Options end -->
+            <!-- Product Filter Side Panel end -->
+            <!-- Product List Section-->
+            <div class="col-lg-9 col-12">
+                <div class="d-flex justify-content-between">
+                    <span class="menulines d-lg-none d-inline my-4" onclick="openNav()">&#9776;FILTER</span>
+                    <span class="d-inline my-4 d-md-block d-none">Showing 1-15 of 18 Results</span>
+                    <select class="form-select bg-light border-0 my-4 w-25 d-inline" ng-change="lowTohigh()" ng-model="features.select">
+                        <option value="">Filters</option>
+                        <option value="Alphabetically,A-Z" ng-model="select">Alphabetically,A-Z</option>
+                        <option value="low to high" ng-model="select">Price, low to high</option>
+                        <option value="high to low" ng-model="select">Price, high to low</option>
+                    </select>
+
+                </div>
+                <div class="row">
+                    <!-- single Product -->
+                    <div class="product col-lg-4 col-md-4 col-sm-6 col-12 mb-4" ng-repeat="Product in Products">
+                        <img ng-src="{{Product.Image}}" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded front_img" ng-click="productDeatil(this)">
+                        <img src="{{Product.Hover_Image}}" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded back_img" ng-click="productDeatil(this)">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span class="fw-light">(1)</span>
+                            </div>
+                            <div class="col-12 text-center" ng-bind="Product.Title"></div>
+                            <div class="col-12 text-center price_tag_color" ng-bind="'$'+Product.Price"></div>
+                            <div class="col-12 text-center pt-2">
+                                <a href="#" class="rounded-pill add_to_cart" ng-click="AddToCart(Product.Id)">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pagination secction -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link rounded-circle bg-dark" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link rounded-circle bg-dark" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link rounded-circle bg-dark" href="#">2</a></li>
+                        <li class="page-item">
+                            <a class="page-link rounded-circle bg-dark" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Product List Section End-->
+        </div>
+    </main>
+    <!-- main section end -->
+    <!-- footer section start -->
+    <footer class="row footer bg-dark">
+        <div class="col-12 col-sm-12 col-lg-12 text-light">
+            <div class="row pt-4">
+                <div class="col-lg-6 col-md-4 col-sm-2 col-1"></div>
+                <div class="col-lg-6 col-md-8 col-sm-10 col-11">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-12 border-end border-danger">
+                            <h5 class="text-danger">Sign up for offers</h5>
+                            <p>
+                                Sign up for our newsletter to receive <span class="d-block"></span> exclusive offers &
+                                discounts!
+                            </p>
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-12 d-flex align-items-center justify-content-start position-relative">
+                            <input type="text" class="form-control rounded-pill bg-light opacity-25 w-50"
+                                   placeholder="Your email address...">
+                            <button class="text-light rounded-pill position-absolute top-10 end-50 me-2 bg-danger opacity-75 border-0"><i class="fa fa-envelope-o fa-lg px-3 py-1 m-auto"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row text-start py-4 fw-light ps-4">
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <img src="/image/logo-white_170x.png" alt="logo-white" class="img-fluid">
+                        <p>
+                            If you have any question, please contact us at <span class="d-block"></span>
+                            support@gmail.com
+                        </p>
+                        <ul>
+                            <li class="d-inline">
+                                <i class="fa fa-facebook-square px-3"></i>
+                                <i class="fa fa-instagram px-3"></i>
+                                <i class="fa fa-twitter-square px-3"></i>
+                                <i class="fa fa-pinterest-square px-3"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Corporate</h5>
+                        <ul class="list-unstyled">
+                            <li>Careers</li>
+                            <li>About Us</li>
+                            <li>Contact Us</li>
+                            <li>FAQs</li>
+                            <li>Vendors</li>
+                            <li>Affiliate Programs</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Information</h5>
+                        <ul class="list-unstyled">
+                            <li>OnlineStores</li>
+                            <li>Privacy Policy</li>
+                            <li>Refund Policy</li>
+                            <li>Shipping Policy</li>
+                            <li>Terms of Service</li>
+                            <li>Track Order</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Services</h5>
+                        <ul class="list-unstyled">
+                            <li>Grooming</li>
+                            <li>Positive Dog Training</li>
+                            <li>Vetenary Services</li>
+                            <li>Petco Insurances</li>
+                            <li>Pet Adoption</li>
+                            <li>Resource Center</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <!-- copyright section -->
+                    <div class="col-lg-6 col-12">
+                        <h6>© 2021 Petio Pets Store</h6>
+                    </div>
+                    <!-- payment section -->
+                    <div class="col-lg-6 col-12 d-flex justify-content-end">
+                        <img src="/image/paymet-1.png" alt="payment card img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+    <!-- java script file -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <script>
+        //fitter section slide in out
+        const openNav = () => {
+            document.getElementById('mySidenav').style.width = "350px";
+            $("#mySidenav").removeClass("d-none d-lg-block col-sm-3 sidenav-close").addClass("d-block sidenav");
+        }
+        const closeNav = () => {
+            document.getElementById('mySidenav').style.width = "0px";
+
+            $("#mySidenav").removeClass("d-block sidenav").addClass("d-none d-lg-block col-sm-3");
+            $("#mySidenav").removeAttr('style');
+        }
+
+        //(function () {
+
+        //    $("#cart").on("click", function () {
+        //        $(".shopping-cart").fadeToggle("fast");
+        //    });
+
+        //})();
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,294 @@
+﻿
+@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <script src="~/assets/js-lib/angular.min.js"></script>
+    <script src="~/assets/js-lib/angular-cookies.js"></script>
+    <script src="~/assets/js/app/app.js"></script>
+    <script src="~/assets/js/app/Controller/ProductCtr.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Prompt:wght@200&display=swap" rel="stylesheet">
+
+    <title>Cart</title>
+</head>
+
+<body ng-app="myApp" ng-controller="addToCartController">
+    <!-- header secction start -->
+    <!-- navbar start   -->
+    <nav class="navbar navbar-expand-lg bg-dark sticky-top px-5" id="navbar">
+        <div class="container">
+            <img src="/image/logo-white_170x.png" alt="companylogo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Products/Products">Dog Food</a></li>
+                            <li><a class="dropdown-item" href="#">Cat Food</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Collection
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Blogs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ps-4 fw-bold">
+                        <a class="nav-link text-white" href="#">Contact</a>
+                    </li>
+                </ul>
+                <!-- Login buttons -->
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <p id="set_name" class="text-white pe-2 d-inline" ng-bind="name"></p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="#" ng-hide="hide"><i class="fa fa-search fs-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="/Account/Login" ng-hide="hide"><i class="fa fa-user fs-5"></i></a>
+                        <a href="#" class="text-light text-decoration-none" ng-bind="Logout" ng-click="logoutUser()"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="#"><i class="fa fa-shopping-bag fs-5"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end  -->
+    <!-- breadcrumb start  -->
+    <div class="breadcrumbcolor pb-1">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb container">
+                <li class="breadcrumb-item pt-2"><a href="#" class="text-light text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item pt-2"><a href="#" class="text-light text-decoration-none">Dog Food</a></li>
+                <li class="breadcrumb-item active pt-2 text-light" aria-current="page" ng-bind="productPageDetail.Title"></li>
+            </ol>
+        </nav>
+    </div>
+    <!-- breadcrumb end  -->
+    <!-- header end  -->
+    <!-- main section start  -->
+    <main class="container">
+       
+        <div class="row my-5">
+            <!--Add to cart list-->
+            <div class="col-lg-8 col-12">
+                <p class="fw-bold fs-3">Your cart</p>
+                <div class="row bg-light my-2 ps-3">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">PRODUCT</div>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-8">QUANTITY</div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-end">TOTAL</div>
+                </div>
+                <div class="row my-2" ng-repeat="addtocart in addToCartData">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                        <img src="{{addtocart[0].Image}}" alt="Commodo leo sed porta"
+                             class="img-fluid w-50 border rounded">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-8 col-8">
+                        <span class="d-block">Paw Nutrition</span>
+                        <a href="#" class="fw-bold text-dark text-decoration-none link-danger d-block" ng-bind="addtocart.Title"></a>
+                        <span>Size:</span> <span>4-lb bag</span>
+                        <span class="d-block price_tag_color" ng-bind="'$'+addtocart.Price"></span>
+
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12 text-end price_tag_color" ng-bind="'$'+addtocart.Price"> </div>
+                </div>
+            </div>
+            <!--Check out section-->
+            <div class="col-lg-4 col-12 bg-light my-4">
+                <p class="mt-3">Order special instructions</p>
+                <div class="form-floating my-2">
+                    <textarea class="form-control h-25" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
+                    <label for="floatingTextarea2">Order special instructions</label>
+                </div>
+                <div class="row border-top">
+                    <div class="col-12 d-flex justify-content-between my-2">
+                        <span>Subtotal:</span>
+                        <span class="price_tag_color" ng-bind="'$'+productPageDetail.Price"></span>
+                    </div>
+                    <p class="text-end">Tax included. Shipping calculated at checkout.</p>
+                    <div class="col-12 text-center pt-2">
+                        <button class="rounded-pill add_to_cart w-100 border-0">Check Out</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </main>
+    <!-- main section end   -->
+    <!-- footer section start -->
+    <footer class="row footer bg-dark">
+        <div class="col-12 col-sm-12 col-lg-12 text-light">
+            <div class="row pt-4">
+                <div class="col-lg-6 col-md-4 col-sm-2 col-1"></div>
+                <div class="col-lg-6 col-md-8 col-sm-10 col-11">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-12 border-end border-danger">
+                            <h5 class="text-danger">Sign up for offers</h5>
+                            <p>
+                                Sign up for our newsletter to receive <span class="d-block"></span> exclusive offers &
+                                discounts!
+                            </p>
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-12 d-flex align-items-center justify-content-start position-relative">
+                            <input type="text" class="form-control rounded-pill bg-light opacity-25 w-50"
+                                   placeholder="Your email address...">
+                            <button class="text-light rounded-pill position-absolute top-10 end-50 me-2 bg-danger opacity-75 border-0">
+                                <i class="fa fa-envelope-o fa-lg px-3 py-1 m-auto"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row text-start py-4 fw-light ps-4">
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <img src="/image/logo-white_170x.png" alt="logo-white" class="img-fluid">
+                        <p>
+                            If you have any question, please contact us at <span class="d-block"></span>
+                            support@gmail.com
+                        </p>
+                        <ul>
+                            <li class="d-inline">
+                                <i class="fa fa-facebook-square px-3"></i>
+                                <i class="fa fa-instagram px-3"></i>
+                                <i class="fa fa-twitter-square px-3"></i>
+                                <i class="fa fa-pinterest-square px-3"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Corporate</h5>
+                        <ul class="list-unstyled">
+                            <li>Careers</li>
+                            <li>About Us</li>
+                            <li>Contact Us</li>
+                            <li>FAQs</li>
+                            <li>Vendors</li>
+                            <li>Affiliate Programs</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Information</h5>
+                        <ul class="list-unstyled">
+                            <li>OnlineStores</li>
+                            <li>Privacy Policy</li>
+                            <li>Refund Policy</li>
+                            <li>Shipping Policy</li>
+                            <li>Terms of Service</li>
+                            <li>Track Order</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Services</h5>
+                        <ul class="list-unstyled">
+                            <li>Grooming</li>
+                            <li>Positive Dog Training</li>
+                            <li>Vetenary Services</li>
+                            <li>Petco Insurances</li>
+                            <li>Pet Adoption</li>
+                            <li>Resource Center</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <!-- copyright section -->
+                    <div class="col-lg-6 col-12">
+                        <h6>© 2021 Petio Pets Store</h6>
+                    </div>
+                    <!-- payment section -->
+                    <div class="col-lg-6 col-12 d-flex justify-content-end">
+                        <img src="/image/paymet-1.png" alt="payment card img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>*@
+    <script>
+        // nav bar hide is you scroll down
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-80px";
+                // $("#navbar").removeClass("d-none d-lg-block col-sm-3 sidenav-close").addClass("d-block sidenav");
+                // $("#navbar").addClass("bg-white");
+            }
+            prevScrollpos = currentScrollPos;
+        }
+    </script>
+
+</body>
+
+</html>

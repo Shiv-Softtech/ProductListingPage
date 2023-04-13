@@ -1,0 +1,755 @@
+﻿@{
+    Layout = null;
+
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/style.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Prompt:wght@200&display=swap" rel="stylesheet">
+    <script src="~/assets/js-lib/angular.min.js"></script>
+    <script src="~/assets/js-lib/angular-cookies.js"></script>
+    <script src="~/assets/js/app/app.js"></script>
+    <script src="~/assets/js/app/Controller/HomeCtr.js"></script>
+    <title>Home</title>
+</head>
+
+<body ng-app="myApp" ng-controller="productController">
+    <!-- header secction start -->
+    <!-- navbar start   -->
+    <nav class="navbar navbar-expand-lg fixed-top px-5 py-3" id="navbar">
+        <div class="container-fluid">
+            <img src="/image/logo-white_170x.png" alt="companylogo">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Home/Index">Home</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/Products/Products">Dog Food</a></li>
+                            <li><a class="dropdown-item" href="#">Cat Food</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Collection
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown ps-4 fw-bold">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Blogs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ps-4 fw-bold">
+                        <a class="nav-link text-white" href="#">Contact</a>
+                    </li>
+                </ul>
+                <!-- Login buttons -->
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <p id="set_name" class="text-white pe-2 d-inline" ng-bind="name"></p>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="#" ng-hide="hide"><i class="fa fa-search fs-5"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="/Account/Login" ng-hide="hide"><i class="fa fa-user fs-5"></i></a>
+                        <a href="#" class="text-light text-decoration-none" ng-bind="Logout" ng-click="logoutUser()"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white lg_texthide" href="#"><i class="fa fa-shopping-bag fs-5"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- navbar end  -->
+    <!-- carousel start  -->
+        <div class="header">
+            <div>
+                <div class="img">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active position-relative">
+                                <img src="/image/slide11_1920x996.jpg" class="d-block w-100" alt="Dogbanner">
+                                <div class="main_content_header">
+                                    <h2 class="text-uppercase">hight quality</h2>
+                                    <h3 class="text-uppercase">pet food</h3>
+                                    <p class="text-uppercase">sale up to 40% off today</p>
+                                    <a href="#" class="text-uppercase px-4 py-2 rounded-pill bg-dark shop_now_btn">
+                                        Shop
+                                        now
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative">
+                                <img src="/image/slide12_1920x996.jpg" class="d-block w-100" alt="catbanner">
+                                <div class="main_content_header">
+                                    <h2 class="text-uppercase">hight quality</h2>
+                                    <h3 class="text-uppercase">pet care</h3>
+                                    <p class="text-uppercase">sale up to 40% off today</p>
+                                    <a href="#" class="text-uppercase px-4 py-2 rounded-pill bg-dark shop_now_btn">
+                                        Shop
+                                        now
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="carousel-item position-relative">
+                                <img src="/image/slide13_1920x996.jpg" class="d-block w-100" alt="dogsbanner">
+                                <div class="main_content_header">
+                                    <h2 class="text-uppercase">hight quality</h2>
+                                    <h3 class="text-uppercase">pettoys</h3>
+                                    <p class="text-uppercase">sale up to 40% off today</p>
+                                    <a href="#" class="text-uppercase px-4 py-2 rounded-pill bg-dark shop_now_btn">
+                                        Shop
+                                        now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- header end  -->
+    <main>
+        <div class="container-fluid px-4">
+            <!-- categories section start -->
+            <div class="row justify-content-center">
+                <p class="py-5 text-center fs-1 fw-bold"> <span class="heading_color">Top</span> Categories</p>
+                <div class="col-xl-1 col-lg-1 d-lg-block d-none"></div>
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="categories_img w-100">
+                        <img src="/image/cate-5_330x303.jpg" alt="cat image" class="img-fluid w-100">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="fw-bolder py-3">Dog Food</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 col-6">
+                    <div class="categories_img w-100">
+                        <img src="/image/cate-6_330x303.jpg" alt="cat image" class="img-fluid w-100">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="fw-bolder py-3">Dog Toys</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4 d-sm-block d-none">
+                    <div class="categories_img w-100">
+                        <img src="/image/cate-7_330x303.jpg" alt="cat image" class="img-fluid w-100">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="fw-bolder py-3">Cat Toys</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-3 d-md-block d-none">
+                    <div class="categories_img w-100">
+                        <img src="/image/cate-9_330x303.jpg" alt="cat image" class="img-fluid w-100">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="fw-bolder py-3">Dog Supplements</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 d-lg-block d-none">
+                    <div class="categories_img w-100">
+                        <img src="/image/cate-8_330x303.jpg" alt="cat image" class="img-fluid w-100">
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <p class="fw-bolder py-3">Cat Food</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-1 col-lg-1 d-lg-block d-none"></div>
+                <!-- categories section end -->
+                <!-- small banner section start -->
+                <div class="row py-5">
+                    <div class="col-lg-4 position-relative py-4">
+                        <img src="/image/banner-1_559x387.jpg" alt="dogimg" class="img-fluid w-100">
+                        <div class="small_banner_text position-absolute top-50 start-0 translate-middle-y">
+                            <p class="text-uppercase fw-semibold fs-6">selected items.online only.</p>
+                            <h4 class="text-capitalize mb-3">hot summer <span class="d-block">deals</span></h4>
+                            <a href="#" class="text-capitalize rounded-pill my-4">read more</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 position-relative py-4">
+                        <img src="/image/banner-2_559x387.jpg" alt="catimg" class="img-fluid w-100">
+                        <div class="small_banner_text position-absolute top-50 start-0 translate-middle-y">
+                            <p class="text-uppercase fw-semibold fs-6">treats & grooming</p>
+                            <h4 class="mb-3">Spoil your true<span class="d-block">love</span></h4>
+                            <a href="#" class="text-capitalize rounded-pill my-4">read more</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 position-relative py-4">
+                        <img src="/image/banner-3_559x387.jpg" alt="birdimg" class="img-fluid w-100">
+                        <div class="small_banner_text position-absolute top-50 start-0 translate-middle-y">
+                            <p class="text-uppercase fw-semibold fs-6">our brand you will love</p>
+                            <h4 class="mb-3">New in this<span class="d-block">year</span></h4>
+                            <a href="#" class="text-capitalize rounded-pill my-4">read more</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- small banner section end -->
+                <!-- best seller section start -->
+                <div class="row">
+                    <p class="py-5 text-center fs-1 fw-bold"> <span class="heading_color">Best </span>Seller</p>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4" ng-repeat="Product in Products  | limitTo : 8">
+                        <img src="{{Product.Image}}" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded front_img"> 
+                        <img src="{{Product.Hover_Image}}" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded back_img">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center" ng-bind="Product.Title"></div>
+                            <div class="col-12 text-center price_tag_color" ng-bind="'$'+Product.Price"></div>
+                        </div>
+                    </div>
+                    @*<div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-16_900x900.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="col-12 text-center">Morbi vel arcu scelerisque</div>
+                            <div class="col-12 text-center price_tag_color">$45.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-14_900x900.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Commodo leo sed porta</div>
+                            <div class="col-12 text-center price_tag_color">$25.00 - $32.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-26_900x900.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Morbi vel arcu scelerisque</div>
+                            <div class="col-12 text-center price_tag_color">$49.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-19_720x720.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Commodo leo sed porta</div>
+                            <div class="col-12 text-center price_tag_color">$15.00 - $22.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-22_720x720.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Nam justo libero porta ege</div>
+                            <div class="col-12 text-center price_tag_color">$54.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-11_540x540.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Leo sed porta</div>
+                            <div class="col-12 text-center price_tag_color">$16.00</div>
+                        </div>
+                    </div>
+                    <div class="product col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                        <img src="/image/product-10_540x540.jpg" alt="Commodo leo sed porta"
+                             class="img-fluid w-100 border rounded">
+                        <div class="row mt-2">
+                            <div class="col-12 text-center">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <div class="col-12 text-center">Etiam commodo leo sed</div>
+                            <div class="col-12 text-center price_tag_color">$85.00</div>
+                        </div>
+                    </div>*@
+                </div>
+                <!-- best seller section end -->
+                <!-- company_logo banner start -->
+                <div class="col-lg-6 my-4 company_logo">
+                    <div class=" company_logo_banner d-flex justify-content-center flex-column align-items-center">
+                        <img src="/image/logo-banner.png" alt="company_name_banner">
+                        <P>
+                            Save big annually with our veterinarian<span class="d-block">
+                                recommended wellness
+                                plan.
+                            </span>
+                        </P>
+                        <a href="#" class="rounded-pill">enroll now</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 my-4 company_logo">
+                    <img src="/image/banner-4_960x535.jpg" alt="dogimg" class="img-fluid w-100">
+                </div>
+                <!-- company_logo banner end -->
+                <!-- pet need and service section start -->
+                <div class="col-12 text-center my-4">
+                    <img src="/image/icon-1.png" alt="petimg">
+                </div>
+                <div class="col-12 text-center pet_need">
+                    <p><span class="heading_color">What your pet needs,</span> when they need it.</p>
+                </div>
+                <div class="col-lg-3 text-center my-4">
+                    <img src="/image/service-1_70x70.png" alt="bus_img">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="fw-semibold text-capitalize">free same-day delivery</p>
+                            <Span class="fw-light">
+                                Oder by 2pm local time to get free delivery on oders $35+
+                                today
+                            </Span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center my-4">
+                    <img src="/image/service-2_70x70.png" alt="returnimg">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="fw-semibold text-capitalize">30 day return</p>
+                            <Span class="fw-light">35% off your order plus 5% off all future orders.</Span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center my-4">
+                    <img src="/image/service-3_70x70.png" alt="policyimg">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="fw-semibold text-capitalize">security payment</p>
+                            <Span class="fw-light">25% off your online order of $50+. Available at most location.</Span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center my-4">
+                    <img src="/image/service-4_70x70.png" alt="customerserviceimg">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="fw-semibold text-capitalize">24/7 support</p>
+                            <Span class="fw-light">Shop online to get orders over $35 shipped fast and free.*</Span>
+                        </div>
+                    </div>
+                </div>
+                <!-- pet need and service section start -->
+            </div>
+        </div>
+        <!-- middel banner section start -->
+        <div class="my-5 middel_banner position-relative">
+            <div class="row">
+                <div class="col-6 position-absolute bottom-0 start-0 ">
+                    <div class="middel_banner_img">
+                        <img src="/image/cat-1_900x660.png" alt="cat_img" class="img-fluid w-100 h-100">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 h-50 position-absolute top-50 end-0 translate-middle-y">
+                    <div class="middel_banner_text">
+                        <img src="/image/icon-2.png" alt="taste icon">
+                        <p class="fw-semibold py-2">
+                            Taste it, love it or we'll replace it...<span class="d-block">Guaranteed!</span>
+                        </p>
+                        <span class="fw-light">
+                            At Petio, we believe your dog and cat will love their food so much that
+                            if they don’t
+                            …
+                            <span class="d-block pb-4">
+                                we’ll help you find a replacement. That’s our taste
+                                guarantee.
+                            </span>
+                        </span>
+                        <a href="#" class="rounded-pill">Find out more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- middel banner section end -->
+        <!-- recommended section start -->
+        <div class="row justify-content-center px-4">
+            <p class="py-5 text-center fs-1 fw-bold"> <span class="heading_color">Recommended </span>For You</p>
+            <div class="col-xl-1 d-xl-block d-none"></div>
+            <div class="product col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                <img src="/image/product-26_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded front_img">
+                <img src="/image/product-26.1_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded back_img">
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <div class="col-12 text-center">Commodo leo sed porta</div>
+                    <div class="col-12 text-center price_tag_color">$15.00 - $22.00</div>
+                    <div class="col-12 text-center pt-2">
+                        <a href="#" class="rounded-pill add_to_cart">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                <img src="/image/product-17_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded">
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="col-12 text-center">Purus consequat congue sit</div>
+                    <div class="col-12 text-center price_tag_color">$45.00</div>
+                    <div class="col-12 text-center pt-2">
+                        <a href="#" class="rounded-pill add_to_cart">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product col-xl-2 col-lg-3 col-md-4 d-md-block d-none">
+                <img src="/image/product-16_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded">
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="col-12 text-center">Commodo leo sed porta</div>
+                    <div class="col-12 text-center price_tag_color">$76.00</div>
+                    <div class="col-12 text-center pt-2">
+                        <a href="#" class="rounded-pill add_to_cart">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product col-xl-2 col-lg-3 d-lg-block d-none">
+                <img src="/image/product-14_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded">
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="col-12 text-center">Morbi vel arcu scelerisque</div>
+                    <div class="col-12 text-center price_tag_color">$45.00</div>
+                    <div class="col-12 text-center pt-2">
+                        <a href="#" class="rounded-pill add_to_cart">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="product col-xl-2 d-xl-block d-none">
+                <img src="/image/product-8_540x540.jpg" alt="Commodo leo sed porta"
+                     class="img-fluid w-100 border rounded">
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="col-12 text-center">Commodo leo </div>
+                    <div class="col-12 text-center price_tag_color">$85.00</div>
+                    <div class="col-12 text-center pt-2">
+                        <a href="#" class="rounded-pill add_to_cart">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-1 d-xl-block d-none"></div>
+        </div>
+        <!-- recommended section end -->
+        <!-- new puppy banner and text start -->
+        <div class="col-12 new_pubby_banner position-relative my-4">
+            <div class="new_pubby_banner_text position-absolute top-50 start-50 translate-middle">
+                <h5> new puppy or kitten?</h5>
+                <p>Discover evertthig you need to make<span class="d-block"> them feel at home</span></p>
+                <a href="#" class="rounded-pill pe-2 text-capitalize">Shop kitten</a>
+                <a href="#" class="rounded-pill ps-2 text-capitalize"> shop puppy</a>
+            </div>
+        </div>
+        <!-- new puppy banner and text end -->
+        <!-- brand logo section start -->
+        <div class="row my-5">
+            <p class="py-2 text-center fs-1 fw-bold"> <span class="heading_color">Popular&nbsp;</span>Brands</p>
+            <div class="col-12">
+                <div class="row justify-content-center px-4">
+                    <div class="col-lg-1 d-md-block d-none"></div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <img src="/image/brand-1_150x150.jpg" alt="dogcat_brand_name" class="border">
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                        <img src="/image/brand-2_150x150.jpg" alt="dogcat_brand_name" class="border">
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4 d-sm-block d-none">
+                        <img src="/image/brand-3_150x150.jpg" alt="dogcat_brand_name" class="border">
+                    </div>
+                    <div class="col-lg-2 col-md-3 d-md-block d-none">
+                        <img src="/image/brand-4_150x150.jpg" alt="dogcat_brand_name" class="border">
+                    </div>
+                    <div class="col-lg-2 d-lg-block d-none">
+                        <img src="/image/brand-5_150x150.jpg" alt="dogcat_brand_name" class="border">
+                    </div>
+                    <div class="col-lg-1 d-md-block d-none"></div>
+                </div>
+            </div>
+        </div>
+        <!-- brand logo section end -->
+    </main>
+    <!-- footer section start -->
+    <footer class="row footer bg-dark">
+        <div class="col-12 col-sm-12 col-lg-12 text-light">
+            <div class="row pt-4">
+                <div class="col-lg-6 col-md-4 col-sm-2 col-1"></div>
+                <div class="col-lg-6 col-md-8 col-sm-10 col-11">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-12 border-end border-danger">
+                            <h5 class="text-danger">Sign up for offers</h5>
+                            <p>
+                                Sign up for our newsletter to receive <span class="d-block"></span> exclusive offers &
+                                discounts!
+                            </p>
+                        </div>
+                        <div class="col-lg-7 col-md-8 col-12 d-flex align-items-center justify-content-start position-relative">
+                            <input type="text" class="form-control rounded-pill bg-light opacity-25 w-50"
+                                   placeholder="Your email address...">
+                            <button class="text-light rounded-pill position-absolute top-10 end-50 me-2 bg-danger opacity-75 border-0">
+                                <i class="fa fa-envelope-o fa-lg px-3 py-1 m-auto"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row text-start py-4 fw-light ps-4">
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <img src="/image/logo-white_170x.png" alt="logo-white" class="img-fluid">
+                        <p>
+                            If you have any question, please contact us at <span class="d-block"></span>
+                            support@gmail.com
+                        </p>
+                        <ul>
+                            <li class="d-inline">
+                                <i class="fa fa-facebook-square px-3"></i>
+                                <i class="fa fa-instagram px-3"></i>
+                                <i class="fa fa-twitter-square px-3"></i>
+                                <i class="fa fa-pinterest-square px-3"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Corporate</h5>
+                        <ul class="list-unstyled">
+                            <li>Careers</li>
+                            <li>About Us</li>
+                            <li>Contact Us</li>
+                            <li>FAQs</li>
+                            <li>Vendors</li>
+                            <li>Affiliate Programs</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Information</h5>
+                        <ul class="list-unstyled">
+                            <li>OnlineStores</li>
+                            <li>Privacy Policy</li>
+                            <li>Refund Policy</li>
+                            <li>Shipping Policy</li>
+                            <li>Terms of Service</li>
+                            <li>Track Order</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-lg-3 col-md-6 col-sm-6 my-3">
+                        <h5>Services</h5>
+                        <ul class="list-unstyled">
+                            <li>Grooming</li>
+                            <li>Positive Dog Training</li>
+                            <li>Vetenary Services</li>
+                            <li>Petco Insurances</li>
+                            <li>Pet Adoption</li>
+                            <li>Resource Center</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <!-- copyright section -->
+                    <div class="col-lg-6 col-12">
+                        <h6>© 2021 Petio Pets Store</h6>
+                    </div>
+                    <!-- payment section -->
+                    <div class="col-lg-6 col-12 d-flex justify-content-end">
+                        <img src="/image/paymet-1.png" alt="payment card img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer section end -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>*@
+    <script>
+
+        // nav bar hide is you scroll down
+        //var prevScrollpos = window.pageYOffset;
+        //window.onscroll = function () {
+        //    var currentScrollPos = window.pageYOffset;
+        //    if (prevScrollpos > currentScrollPos) {
+        //        document.getElementById("navbar").style.top = "0";
+        //    } else {
+        //        document.getElementById("navbar").style.top = "-80px";
+        //       // $("#navbar").removeClass("d-none d-lg-block col-sm-3 sidenav-close").addClass("d-block sidenav");
+        //       // $("#navbar").addClass("bg-white");
+        //    }
+        //    prevScrollpos = currentScrollPos;
+        //}
+        // nav bar hide is you scroll down
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+                $("#navbar").removeAttr('style');
+                $("#navbar").addClass("bg-dark");
+            } else {
+                document.getElementById("navbar").style.top = "-100px";
+            }
+            prevScrollpos = currentScrollPos
+            if (prevScrollpos == 0) {
+                $("#navbar").removeClass("bg-dark");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
